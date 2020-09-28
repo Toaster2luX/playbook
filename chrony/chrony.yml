@@ -1,6 +1,7 @@
 ---
   - name: Modification du serveur de temps
     hosts: vm
+    become: yes
 
     tasks:
       - name: Remplacement des pools dans le fichier chrony.conf
