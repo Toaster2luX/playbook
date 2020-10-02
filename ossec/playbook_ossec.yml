@@ -1,0 +1,27 @@
+---
+- hosts: all 
+  become: yes
+  tasks:
+
+  - name: désactivation du service centos 6
+    service:
+      name: "{{ item }}"
+      enabled: no
+    with_items:
+      - ossec-hids
+
+  - name: arret du service centos 6
+    service:
+      name: ossec-hids
+      state: stopped
+    when: (ansible_distribution == "CentOS" or ansible_distribution == "RedHat") and
+      (ansible_distribution_major_version <= "6")
+
+  - name: désactivation et arret du service centos 7
+    service:
+      name: ossec-hids
+      state: stopped
+      enabled: False      
+    when: (ansible_distribution == "CentOS" or ansible_distribution == "RedHat") and
+      (ansible_distribution_major_version <= "7")
+
