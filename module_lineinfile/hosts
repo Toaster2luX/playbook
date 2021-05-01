@@ -1,0 +1,6 @@
+[local]
+admin ansible_connection=local
+
+[apache]
+serveur1.domaine.tld ansible_port=2222
+serveur2.domaine.tld ansible_port=2222
