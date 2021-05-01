@@ -1,11 +1,18 @@
 # Module LineInFile
 -----------------
 Pour ajouter une ligne dans un fichier
-Pour mon besoin, necessite l'ajout de 3 variables 
+Pour mon besoin, necessite l'ajout de 3 variables  
 
+Pour le test local
 * prenom
 * nom
 * certificat
+
+Pour les serveurs Apache, require un fichier de destination en fonction du workspace ou le token est autorisé à se connecter.
+* prenom
+* nom
+* certificat
+* destination
 
 
 ## Exécution
