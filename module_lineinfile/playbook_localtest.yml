@@ -1,7 +1,7 @@
 ---
   - name: Playbook lineinfile
     hosts: local
- 
+
     tasks:
       - name: Ajout du certificat
         lineinfile:
