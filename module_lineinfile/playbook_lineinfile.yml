@@ -1,0 +1,19 @@
+---
+  - name: Playbook lineinfile
+    hosts: apache
+    become: yes
+ 
+    tasks:
+      - name: Ajout du certificat
+        lineinfile:
+                path: /etc/httpd/conf.auth.d/extranet.xxxv.xx/{{ destination }}.conf
+                line: "Require expr \"'%{SSL_CLIENT_I_DN}:%{SSL_CLIENT_S_DN_CN}:%{SSL_CLIENT_M_SERIAL}' == 'CN=xxx,OU=xxx,O=xxx,C=xx:{{ prenom }} {{ nom }}:{{ certificat }}'\""
+                owner: root
+                group: root
+ 
+      - name: Status du service
+        command: /usr/sbin/apachectl configtest
+        changed_when: false
+ 
+      - name: recharger apache
+        command: /usr/sbin/apachectl graceful
